@@ -12,7 +12,7 @@ VALUES (1, 'John', 'Doe', 85);
 INSERT INTO Students2 (StudentID, FirstName, LastName, Marks)
 VALUES (2, 'bal', 'Doe', 85);
 INSERT INTO Students2 (StudentID, FirstName, LastName, Marks)
-VALUES (3, 'puk', 'Doe', 85);
+VALUES (3, 'pk', 'Doe', 85);
 
 -- Display inserted data
 SELECT * FROM Students2;
