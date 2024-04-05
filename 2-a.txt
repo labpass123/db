@@ -1,0 +1,33 @@
+-- Create table
+CREATE TABLE Students2 (
+    StudentID INT ,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Marks NUMBER(10)
+);
+
+-- Insert data
+INSERT INTO Students2 (StudentID, FirstName, LastName, Marks)
+VALUES (1, 'John', 'Doe', 85);
+INSERT INTO Students2 (StudentID, FirstName, LastName, Marks)
+VALUES (2, 'bal', 'Doe', 85);
+INSERT INTO Students2 (StudentID, FirstName, LastName, Marks)
+VALUES (3, 'puk', 'Doe', 85);
+
+-- Display inserted data
+SELECT * FROM Students2;
+
+-- Update data
+UPDATE Students2
+SET Marks = 143
+WHERE StudentID = 1;
+
+-- Display updated data
+SELECT * FROM Students2;
+
+-- Delete data
+DELETE FROM Students2
+WHERE StudentID = 1;
+
+-- Display remaining data (should be empty after deletion)
+SELECT * FROM Students2;

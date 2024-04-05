@@ -1,0 +1,14 @@
+set serveroutput on;
+declare
+n1 int;
+n2 int;
+r int;
+begin
+n1:=10;
+n2:=0;
+r:=n1/n2;
+dbms_output.put_line('result:'||r);
+Exception
+when zero_divide then
+dbms_output.put_line('error');
+end;

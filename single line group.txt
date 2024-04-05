@@ -1,0 +1,8 @@
+SELECT SQRT(4)"SQUAREROOT"From DUAL;
+select power(2,2)"raised"From dual;
+create table empp(ename varchar2(30),eno number(10));
+insert into empp(ename,eno)values('nikki',10);
+select count(*) From empp;
+
+
+

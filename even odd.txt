@@ -1,0 +1,11 @@
+SET SERVEROUTPUT ON;
+DECLARE
+num INT;
+BEGIN
+num:=3;
+IF MOD(num,2)=0 THEN
+dbms_output.put_line('even');
+ELSE
+dbms_output.put_line('odd');
+END IF;
+END;

@@ -1,0 +1,18 @@
+SELECT SQRT(4) AS "SQUAREROOT" FROM DUAL;
+-- Result: SQUAREROOT = 2
+SELECT POWER(4,2) AS "POWER" FROM DUAL;
+-- Result: SQUAREROOT = 2
+CREATE TABLE students1 (
+    sname VARCHAR2(30),
+    sno NUMBER(10),
+    marks NUMBER(10)
+);
+
+INSERT INTO students1 (sname, sno, marks) VALUES ('John', 101, 75);
+INSERT INTO students1 (sname, sno, marks) VALUES ('Emma', 102, 80);
+
+SELECT COUNT(*) FROM students1;
+
+SELECT SUM(marks) AS total_marks FROM students1;
+
+SELECT AVG(marks) AS average_marks FROM students1;

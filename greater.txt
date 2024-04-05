@@ -1,0 +1,24 @@
+SET SERVEROUTPUT ON;
+DECLARE
+  num1_input INT;
+  num2_input INT;
+  num3_input INT;
+  max_num INT;
+BEGIN
+  -- Prompt user to input three numbers
+  num1_input := 1;
+  num2_input :=2;
+  num3_input := 3;
+ max_num:=num1_input;
+  -- Find the maximum number
+IF num2_input > max_num THEN
+    max_num:=num2_input;
+END IF;
+
+IF num3_input > max_num THEN
+    max_num:=num3_input;
+END IF;
+
+  -- Output the result
+  DBMS_OUTPUT.PUT_LINE('The largest number is: ' || max_num);
+END;

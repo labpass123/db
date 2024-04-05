@@ -1,0 +1,33 @@
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR2(50)
+);
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR2(50),
+    dept_id INT,
+    salary INT,
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+
+INSERT INTO departments VALUES (1, 'HR');
+INSERT INTO departments VALUES (2, 'IT');
+INSERT INTO departments VALUES (3, 'Finance');
+
+INSERT INTO employees VALUES (101, 'John Doe', 1, 50000);
+INSERT INTO employees VALUES (102, 'Jane Smith', 2, 60000);
+INSERT INTO employees VALUES (103, 'Michael Johnson', 1, 55000);
+SELECT employees.emp_id, employees.emp_name, departments.dept_name
+FROM employees
+JOIN departments ON employees.dept_id = departments.dept_id;
+SELECT employees.emp_id, employees.emp_name, employees.salary, departments.dept_name
+FROM employees
+JOIN departments ON employees.salary > departments.dept_id;
+SELECT employees.emp_id, employees.emp_name, departments.dept_name
+FROM employees
+LEFT JOIN departments ON employees.dept_id = departments.dept_id;
+SELECT e1.emp_name AS employee_name, e2.emp_name AS manager_name
+FROM employees e1
+JOIN employees e2 ON e1.manager_id = e2.emp_id;
+

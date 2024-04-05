@@ -1,0 +1,45 @@
+SET SERVEROUTPUT ON;
+DROP TABLE employees ;
+CREATE TABLE employees (
+    emp_id INT,
+    emp_name VARCHAR(20),
+    emp_salary INT
+);
+
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (1, 'John', 500);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (2, 'Ravi', 1000);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (3, 'David', 2000);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (4, 'Surya', 3000);
+
+SELECT * FROM employees;
+
+DECLARE
+    CURSOR emp_cursor IS
+        SELECT emp_id, emp_salary
+        FROM employees
+        FOR UPDATE;
+    updated_records INT := 0;
+BEGIN
+    FOR emp_record IN emp_cursor LOOP
+        IF emp_record.emp_salary < 1000 THEN
+            UPDATE employees
+            SET emp_salary = 1500
+            WHERE CURRENT OF emp_cursor;
+            updated_records := updated_records + 1;
+        ELSIF emp_record.emp_salary >= 1000 AND emp_record.emp_salary < 2000 THEN
+            UPDATE employees
+            SET emp_salary = 2500
+            WHERE CURRENT OF emp_cursor;
+            updated_records := updated_records + 1;
+        ELSIF emp_record.emp_salary >= 2000 AND emp_record.emp_salary <= 3000 THEN
+            UPDATE employees
+            SET emp_salary = 4000
+            WHERE CURRENT OF emp_cursor;
+            updated_records := updated_records + 1;
+        END IF;
+    END LOOP;
+    DBMS_OUTPUT.PUT_LINE('Updated records: ' || updated_records);
+END;
+/
+
+SELECT * FROM employees

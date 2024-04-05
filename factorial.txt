@@ -1,0 +1,11 @@
+SET SERVEROUTPUT ON;
+DECLARE
+  NUM INT := 5; 
+  FACT INT := 1;
+BEGIN
+ 
+  FOR i IN 1..NUM LOOP
+    FACT := FACT * i;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('Factorial of  is ' || FACT);
+END;

@@ -1,0 +1,40 @@
+-- Enable output
+SET SERVEROUTPUT ON;
+
+-- Create the employee table
+CREATE TABLE employee(
+    e_no NUMBER(3),
+    e_name VARCHAR2(12),
+    address VARCHAR2(13)
+);
+
+-- Insert some sample data into the employee table
+INSERT INTO employee VALUES(1, 'nik', 'palasa');
+INSERT INTO employee VALUES(22, 'nikkk', 'palasal');
+INSERT INTO employee VALUES(23, 'nikk', 'palasam');
+
+-- Declare variables
+DECLARE
+    e_no_param employee.e_no%TYPE := 1; -- Parameter to search for
+    e_name employee.e_name%TYPE;
+    address employee.address%TYPE;
+    invalid_id EXCEPTION;
+    no_data_found EXCEPTION;
+BEGIN
+    -- Check if employee number is invalid
+    IF e_no_param = 0 THEN
+        RAISE invalid_id;
+    ELSE
+        -- Retrieve employee name and address
+        SELECT e_name, address INTO e_name, address FROM employee WHERE e_no = e_no_param;
+        -- Output employee information
+        DBMS_OUTPUT.PUT_LINE('Employee name: ' || e_name || ', Address: ' || address);
+    END IF;
+EXCEPTION
+    -- Handle invalid ID exception
+    WHEN invalid_id THEN
+        DBMS_OUTPUT.PUT_LINE('Invalid employee ID');
+    -- Handle no data found exception
+    WHEN no_data_found THEN
+        DBMS_OUTPUT.PUT_LINE('No data found');
+END;

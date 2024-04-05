@@ -1,0 +1,16 @@
+SET SERVEROUTPUT ON;
+DECLARE
+  n INT := 123;
+  rem INT;
+  rev INT := 0;
+  o INT;
+BEGIN
+  o := n;
+  WHILE o > 0 LOOP
+    rem := o MOD 10;
+    rev := rev * 10 + rem;
+    o := o / 10;  -- Use integer division
+     -- Ensure o remains an integer
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('Reverse: ' || rev);
+END;

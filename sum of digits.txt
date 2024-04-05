@@ -1,0 +1,16 @@
+ SET SERVEROUTPUT ON;
+DECLARE
+  num_input NUMBER;
+  temp NUMBER;
+  rem NUMBER;
+  sum_of_digits NUMBER := 0;
+BEGIN
+  num_input := 12;
+   temp := num_input;
+  WHILE temp > 0 LOOP
+    rem := MOD(temp, 10);
+    sum_of_digits := sum_of_digits + rem;
+    temp := TRUNC(temp / 10);
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('The sum of digits of ' || num_input || ' is ' || sum_of_digits);
+END;

@@ -1,0 +1,33 @@
+-- Enable server output
+SET SERVEROUTPUT ON;
+
+-- Create a sample table
+CREATE TABLE employees5 (
+    employee_id NUMBER,
+    employee_name VARCHAR2(50),
+    salary NUMBER
+);
+
+-- DCL: Grant privileges to a user
+GRANT SELECT, INSERT, UPDATE, DELETE ON employees4 TO user1;
+
+-- Start a transaction
+BEGIN
+    -- Insert data into the employees table
+    INSERT INTO employees5 (employee_id, employee_name, salary) VALUES (1, 'John', 50000);
+    INSERT INTO employees5 (employee_id, employee_name, salary) VALUES (2, 'Jane', 60000);
+    
+    -- Display inserted records
+    FOR i IN (SELECT * FROM employees5) LOOP
+        DBMS_OUTPUT.PUT_LINE('Employee ID: ' || i.employee_id || ', Name: ' || i.employee_name || ', Salary: ' || i.salary);
+    END LOOP;
+    
+    -- TCL: Save the transaction
+    COMMIT;
+EXCEPTION
+    -- Rollback if an error occurs
+    WHEN OTHERS THEN
+        -- TCL: Rollback the transaction
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('An error occurred. Transaction rolled back.');
+END;
