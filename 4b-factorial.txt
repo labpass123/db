@@ -1,0 +1,24 @@
+
+SET SERVEROUTPUT ON;
+
+CREATE TABLE Factorials (
+    Number INT,
+    Factorial INT
+);
+
+
+DECLARE
+    NUM INT := 5;
+    FACT INT := 1;
+BEGIN
+    FOR i IN 1..NUM LOOP
+        FACT := FACT * i;
+    END LOOP;
+    
+
+    INSERT INTO Factorials (Number, Factorial) VALUES (NUM, FACT);
+    
+ 
+    DBMS_OUTPUT.PUT_LINE('Factorial of ' || NUM || ' is ' || FACT);
+END;
+/
